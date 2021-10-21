@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foodTracker - Get Started</title>
+    <!-- Compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Nav Bar -->
+    <div id="header"></div>
+    <!-- End Main Nav Bar -->
+    <div class="row" style="padding: 5%;">
+        <div class="col s3" style="">
+            <h6>Search</h6>
+        </div>
+        <div class="col s6" style="">
+            <h5 style="line-height: 1.3;">Welcome back, Michael</h5>
+            <div class="row">
+                <div class="col s4">
+                    
+                </div>
+            </div>
+            <table class="responsive-table">
+                <thead>
+                  <tr>
+                      <th>Food Name</th>
+                      <th>Calories</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <tr>
+                    <td>Coca-Cola</td>
+                    <td>250</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col s3">
+            <h5 style="line-height: 1.3;">Fill out this short form to get started!</h5>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="name" type="text" class="validate">
+                    <label for="name">Your name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>What's your gender</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>What's your height</option>
+                      <option value="fiveZero">5'0</option>
+                      <option value="fiveOne">5'1</option>
+                      <option value="fiveTwo">5'2</option>
+                      <option value="fiveThree">5'3</option>
+                      <option value="fiveFour">5'4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="weight" type="text" class="validate">
+                    <label for="weight">Your Weight</label>
+                </div>
+            </div>
+            <div class="row" style="clear: both; text-align: right;">
+                <a class="waves-effect waves-light btn-large" style="background-color: #303E2C; box-shadow: none; height: 40px; line-height: 40px;">Save</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+    <script src="Assets/js/script.js"></script>
+    <script src="Assets/js/slider.js"></script>
+    <script src="Assets/js/int.js"></script>
+    <script>
+        // Or with jQuery
+
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+            $('select').formSelect();
+        });
+    </script>
+</body>
+</html>

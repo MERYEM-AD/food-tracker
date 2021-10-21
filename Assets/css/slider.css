@@ -1,0 +1,82 @@
+.customer-revs {
+    margin: 0 auto 0 auto;
+  }
+
+  
+  /* slideshow container */
+  .slideshow-container {
+    position: relative;
+    width: 60rem;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Slides */
+  .mySlides {
+    display: none;
+    padding: 2rem 5rem 0 5rem;
+    text-align: center;
+  }
+  
+  .mySlidesContainer {
+    min-height: 5rem;
+    padding: 3.5rem 2.5rem 2rem 3.5rem;
+    /* background: #FBF3EB; */
+    font-size: 18px;
+  }
+  
+  /* next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    width: auto;
+    margin-top: -1.875rem;
+    padding: 1rem;
+    color: #C1DEBA;
+    font-weight: bold;
+    font-size: 3rem;
+    border-radius: 3px;
+    user-select: none;
+    transition: 0.4s;
+  }
+  
+  /* position the "next button" to the right */
+  .next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px;
+  }
+  
+  /* on hover, add a black bg color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: #C1DEBA; /* fallback color */
+    background-color: #C1DEBA;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* the dot/bullet/indicator container */
+  .dot-container {
+    text-align: center;
+    padding: 0 1.25rem;
+  }
+  
+  /* the dots/bullets/indicators */
+  .dot {
+    height: 0.9375rem;
+    width: 0.9375rem;
+    margin: 0 2px;
+    background-color: #FBF3EB;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.4s ease;
+  }
+  
+  /* add bg color to the active dot/circle */
+  .active {
+    background-color: #232323;
+  }
+  
