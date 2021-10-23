@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Tracker</title>
+    <!-- Compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body onload="checkCookie()">
+    <!-- Main Nav Bar -->
+    <div id="header"></div>
+    <!-- End Main Nav Bar -->
+    <div class="row" style="padding: 5%; text-align: center;">
+        <h3>Welcome back</h3>
+        <div class="input-field col s6" style="margin: 5% 25%">
+            <div></div>
+            <input placeholder="" id="username" type="text" class="validate">
+            <label for="first_name">Username</label>
+            <a class="waves-effect waves-light btn-large" id="btn_login" style="box-shadow: none; background-color: #303E2C; width: 100%;">Login</a>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+    <script src="Assets/js/script.js"></script>
+    <script src="Assets/js/slider.js"></script>
+    <script src="Assets/js/int.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+</html>
