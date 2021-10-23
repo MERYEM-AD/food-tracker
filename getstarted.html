@@ -26,7 +26,10 @@
             <h5 style="line-height: 1.3;">Welcome back, <span id="userLogged"></span></h5>
             <div class="row">
                 <div class="col s4">
-                    
+                    Your weight: <span id="showUserWeight"></span>
+                </div>
+                <div class="col s4">
+                    Your goal: <span id="showUserGoalWeight"></span>
                 </div>
             </div>
             <table class="responsive-table">
@@ -47,42 +50,60 @@
         </div>
         <div class="col s3">
             <h5 style="line-height: 1.3;">Fill out this short form to get started!</h5>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="name" type="text" class="validate">
-                    <label for="name">Your name</label>
+            <form action="">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="userVal" type="text" class="validate">
+                        <label for="name" id="userVal">Your name</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <select>
-                      <option value="" disabled selected>What's your gender</option>
-                      <option value="female">Female</option>
-                      <option value="male">Male</option>
-                    </select>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="userGender">
+                          <option value="" disabled selected>What's your gender</option>
+                          <option value="female">Female</option>
+                          <option value="male">Male</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <select>
-                      <option value="" disabled selected>What's your height</option>
-                      <option value="fiveZero">5'0</option>
-                      <option value="fiveOne">5'1</option>
-                      <option value="fiveTwo">5'2</option>
-                      <option value="fiveThree">5'3</option>
-                      <option value="fiveFour">5'4</option>
-                    </select>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="userHeight">
+                          <option value="" disabled selected>What's your height</option>
+                          <option value="fiveZero">5'0</option>
+                          <option value="fiveOne">5'1</option>
+                          <option value="fiveTwo">5'2</option>
+                          <option value="fiveThree">5'3</option>
+                          <option value="fiveFour">5'4</option>
+                          <option value="fiveFive">5'5</option>
+                          <option value="fiveSix">5'6</option>
+                          <option value="fiveSeven">5'7</option>
+                          <option value="fiveHeight">5'8</option>
+                          <option value="fiveNine">5'9</option>
+                          <option value="fiveTen">5'10</option>
+                          <option value="fiveEleven">5'11</option>
+                          <option value="sixZero">6'0</option>
+                          <option value="sixOne">6'1</option>
+                          <option value="sixTwo">6'2</option>
+                          <option value="sixThree">6'3</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="weight" type="text" class="validate">
-                    <label for="weight">Your Weight</label>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="weight" type="text" class="validate">
+                        <label for="weight">Your Weight</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="goal_weight" type="text" class="validate">
+                        <label for="goal_weight">Your Goal (weight)</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row" style="clear: both; text-align: right;">
-                <a class="waves-effect waves-light btn-large" style="background-color: #303E2C; box-shadow: none; height: 40px; line-height: 40px;">Save</a>
-            </div>
+                <div class="row" style="clear: both; text-align: right;">
+                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-large"  style="background-color: #303E2C; box-shadow: none; height: 40px; line-height: 40px; cursor: pointer;" id="saveUserInfo" />
+                    <!-- <a class="waves-effect waves-light btn-large">Save</a> -->
+                </div>
+            </form>
         </div>
     </div>
     <div id="footer"></div>

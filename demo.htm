@@ -1,0 +1,70 @@
+<div>
+
+    <input type="text" id="height" placeholder="Height"/>
+
+    <input type="text" id="weight" placeholder="Weight"/>
+    <select name="" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <button id="btn_get">Get</button>
+
+</div>
+
+<script>
+
+    var getButton = document.getElementById("btn_get");
+
+    getButton.addEventListener("click", function(){
+
+
+
+                    let localWeight = {
+
+                        Female:{
+                            fiveZero: 100,
+                            fiveEleven: 190
+                        },
+
+                        Male:{
+                            fiveZero: 120,
+                            fiveEleven: 200
+                        }
+
+                    }
+
+                    var userHeight = document.getElementById("height").value;
+                    var userWeight = document.getElementById("weight").value;
+
+                    if(userHeight == "5'0"){
+
+                                    if(userWeight == localWeight.Female.fiveZero){
+
+                                                    console.log("Your weight is good for your height")
+
+                                    }else if(userWeight < localWeight.Female.fiveZero){
+
+                                                    var totalWeight = localWeight.Female.fiveZero - userWeight;
+
+                                                    console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to gain "+ totalWeight);
+
+                                                   
+
+                                    }else if(userWeight > localWeight.Female.fiveZero){
+
+                                                    var totalWeight = userWeight - localWeight.Female.fiveZero;
+
+                                                    console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to loose "+ totalWeight);
+
+                                    }
+
+                    }
+
+    });
+
+
+
+   
+
+</script>
