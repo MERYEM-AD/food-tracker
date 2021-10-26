@@ -4,8 +4,8 @@
 
     <input type="text" id="weight" placeholder="Weight"/>
     <select name="" id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
     </select>
 
     <button id="btn_get">Get</button>
@@ -37,29 +37,40 @@
                     var userHeight = document.getElementById("height").value;
                     var userWeight = document.getElementById("weight").value;
 
-                    if(userHeight == "5'0"){
+                    var gender = document.getElementById("gender").value;
 
-                                    if(userWeight == localWeight.Female.fiveZero){
+                    console.log(gender);
+                    if(gender == "Male"){
+                        console.log("Yes");
+                    }else if(gender == "Female") {
+                        console.log("Female");
+                    }else{
+                        console.log("Slect your gender!");
+                    }
 
-                                                    console.log("Your weight is good for your height")
+                    // if(userHeight == "5'0"){
 
-                                    }else if(userWeight < localWeight.Female.fiveZero){
+                    //                 if(userWeight == localWeight.Female.fiveZero){
 
-                                                    var totalWeight = localWeight.Female.fiveZero - userWeight;
+                    //                                 console.log("Your weight is good for your height")
 
-                                                    console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to gain "+ totalWeight);
+                    //                 }else if(userWeight < localWeight.Female.fiveZero){
+
+                    //                                 var totalWeight = localWeight.Female.fiveZero - userWeight;
+
+                    //                                 console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to gain "+ totalWeight);
 
                                                    
 
-                                    }else if(userWeight > localWeight.Female.fiveZero){
+                    //                 }else if(userWeight > localWeight.Female.fiveZero){
 
-                                                    var totalWeight = userWeight - localWeight.Female.fiveZero;
+                    //                                 var totalWeight = userWeight - localWeight.Female.fiveZero;
 
-                                                    console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to loose "+ totalWeight);
+                    //                                 console.log("Your weight is "+ userWeight +" the average weight for your height is "+ localWeight.Female.fiveZero +" you need to loose "+ totalWeight);
 
-                                    }
+                    //                 }
 
-                    }
+                    // }
 
     });
 
