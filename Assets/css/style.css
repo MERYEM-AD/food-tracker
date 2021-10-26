@@ -1,12 +1,11 @@
 body{font-family: 'Balsamiq Sans', cursive;}
 
-/**** Search.html css***/
+/**** getstarted.html css***/
 
-/* .foodItems{
+.hidden{
 
-    border: none;
-    padding: 50px;
-}  */
+    display: none;
+}
 
 
 /*******************/
