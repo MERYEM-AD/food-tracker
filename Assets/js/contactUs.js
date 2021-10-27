@@ -20,3 +20,5 @@ function sendEmail() {
         alert("mail sent successfully")
     });
 }
+
+button.addEventListener("click", sendEmail);
