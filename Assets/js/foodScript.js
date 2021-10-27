@@ -24,6 +24,10 @@
  //show the final resault in the Final_Resault div
  const Final_Resault= document.querySelector(".Final_Resault");
 
+ //404 page 
+
+ const UnfoundedFood = "./404.html";
+
   
 
 
@@ -33,107 +37,38 @@
      event.preventDefault();
      
 
-     let searchInputVal = document.querySelector('#search-input').value;
+     let searchInputVal = document.querySelector('#search-input').value.trim().toUpperCase();
 
     let foodRequest ="https://api.edamam.com/api/recipes/v2?type=public&q="+searchInputVal+"&app_id="+applicationID+"&app_key="+apiKey;
 
    //  **** to do : add condition of fetch  
    foodItems.textContent=""; // to refresh the searched food
 
-   //fetching DATA
 
-   fetch(foodRequest)
-   .then(function(response){
-
-    if(response.status===200){
-  
-      return response.json();
-    }
-  
-   })
-   .then( function(data){
-      
-    for (let i=0;i<4;i++){ // we can Display 20 results
-
-        
-        
-        //create HTML ELEMENTS : 
-
-        const foodOption = document.createElement('div');
-
-        const card = document.createElement('div');
-
-        const cardImage = document.createElement('div');
-        const foodImage = document.createElement('img');
-        const foodname =  document.createElement('span');
-
-        const cardContent = document.createElement('div');
-        const calorieDescription = document.createElement('p');
-
-        const cardAction = document.createElement('div');
-        const btnAdd = document.createElement('button');
-        const addIcon = document.createElement('i');
-        const link = document.createElement('a');
-
-        
-
-        ///////////////////************* set class *************/////////////////
-
-        foodOption.setAttribute("class","foodOption row");
-
-        card.setAttribute("class","card");
-
-        cardImage.setAttribute("class","card-image");
-        foodImage.setAttribute("src",data.hits[i].recipe.image);
-        foodname.setAttribute("class","card-title");
-        foodname.setAttribute("style","background-color: brown;padding: 0;width: 100%;text-align: center;font-size: 14px;")
-        foodname.textContent=data.hits[i].recipe.label;
-
-
-        cardContent.setAttribute("class","card-content");
-        calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" kcl";
-
-        cardAction.setAttribute("class","card-action");
-
-        btnAdd.setAttribute("class","btn-floating btn-large waves-effect waves-light red");
-     
-
-
-        addIcon.setAttribute("class","material-icons");
-        addIcon.setAttribute("data-food",data.hits[i].recipe.label+"/******/"+(data.hits[i].recipe.calories).toFixed(2));
-        addIcon.addEventListener('click',AddFood);
-        addIcon.textContent="add";
-
-        link.setAttribute("href",data.hits[i].recipe.url);
-        link.setAttribute("target","_blank");
-        link.textContent=" Read the recipe ";
-
-
-   ///////////////////************* Append HTML ELMENTS *************/////////////////
-
-        cardImage.append(foodImage);
-        cardImage.append(foodname);
-   
-        
-        card.append(cardImage);
-        card.append(cardContent);
-        card.append(cardAction);
-
-     
-
-        cardContent.append(calorieDescription);
-
-        btnAdd.append(addIcon);
-        cardAction.append(link);
-        cardAction.append(btnAdd);
-
-        foodOption.append(card);
-    
-        foodItems.append(foodOption);
-     
-
+   if(!searchInputVal){
+    return; // message
 
    }
+
+   //fetching DATA
+
+
+    fetch(foodRequest)
+   .then(function(response){
+    if(response.status === 404){
+
+      return;
+
+      // console.log ("Sorry ,Unfounded Food ");
+      // document.location.href=UnfoundedFood;
+      
+    }else{
+
+
+      DisplaySearchFoodList(foodRequest);
+     
+    }
+
 
    });
 
@@ -143,7 +78,108 @@
  });
 
 
+ function DisplaySearchFoodList(urlRequest){
 
+  fetch(urlRequest)
+  .then(function(response){
+     return response.json();
+  })
+  .then( function(data){
+  
+    if(data.hits.length===0){
+      
+      console.log("food not founed ") ; // message 
+
+      return;
+    }
+    else {
+
+        for (let i=0;i<4;i++){ // we can Display 20 results
+
+      
+      
+      //create HTML ELEMENTS : 
+
+      const foodOption = document.createElement('div');
+
+      const card = document.createElement('div');
+
+      const cardImage = document.createElement('div');
+      const foodImage = document.createElement('img');
+      const foodname =  document.createElement('span');
+
+      const cardContent = document.createElement('div');
+      const calorieDescription = document.createElement('p');
+
+      const cardAction = document.createElement('div');
+      const btnAdd = document.createElement('button');
+      const addIcon = document.createElement('i');
+      const link = document.createElement('a');
+
+      
+
+      ///////////////////************* set class *************/////////////////
+
+      foodOption.setAttribute("class","foodOption row");
+
+      card.setAttribute("class","card");
+
+      cardImage.setAttribute("class","card-image");
+      foodImage.setAttribute("src",data.hits[i].recipe.image);
+      foodname.setAttribute("class","card-title");
+      foodname.setAttribute("style","background-color: brown;padding: 0;width: 100%;text-align: center;font-size: 14px;")
+      foodname.textContent=data.hits[i].recipe.label;
+
+
+      cardContent.setAttribute("class","card-content");
+      calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" kcl";
+
+      cardAction.setAttribute("class","card-action");
+
+      btnAdd.setAttribute("class","btn-floating btn-large waves-effect waves-light red");
+   
+
+
+      addIcon.setAttribute("class","material-icons");
+      addIcon.setAttribute("data-food",data.hits[i].recipe.label+"/******/"+(data.hits[i].recipe.calories).toFixed(2));
+      addIcon.addEventListener('click',AddFood);
+      addIcon.textContent="add";
+
+      link.setAttribute("href",data.hits[i].recipe.url);
+      link.setAttribute("target","_blank");
+      link.textContent=" Read the recipe ";
+
+
+ ///////////////////************* Append HTML ELMENTS *************/////////////////
+
+      cardImage.append(foodImage);
+      cardImage.append(foodname);
+ 
+      
+      card.append(cardImage);
+      card.append(cardContent);
+      card.append(cardAction);
+
+   
+
+      cardContent.append(calorieDescription);
+
+      btnAdd.append(addIcon);
+      cardAction.append(link);
+      cardAction.append(btnAdd);
+
+      foodOption.append(card);
+  
+      foodItems.append(foodOption);
+   
+
+
+ }}
+  });
+
+
+
+ }
 
 
 
@@ -257,10 +293,12 @@ deletefood.addEventListener('click',DeleteRow);
     deletebtn.parentElement.remove();
     //console.log( deletebtn.parentElement.nodeName); return  element name
 
+
   
   
  }
 
+ 
 
 
  //Display final ard of the user
@@ -287,6 +325,8 @@ deletefood.addEventListener('click',DeleteRow);
  userCurrentWeight.textContent="Your current weight : "+showUserWeight.innerHTML+" lb";
  userGoalWeight.textContent = "Your goal weight : "+showUserGoalWeight.innerHTML+" lb";
 
+
+
  userCard.append(userGender);
  userCard.append(userHeight);
  userCard.append(userCurrentWeight);
@@ -300,6 +340,9 @@ deletefood.addEventListener('click',DeleteRow);
  Final_Resault.classList.remove("hidden");
 
 
+ 
+
+
 });
 
 
@@ -310,7 +353,7 @@ const resetBtn = document.querySelector("#reset");
 
 
 
-saveBtn.addEventListener('click',function(){}); // save into the local storage
+
 
 
 resetBtn.addEventListener('click',function(){
@@ -323,7 +366,84 @@ resetBtn.addEventListener('click',function(){
  userCard.textContent="";
  Final_Resault.setAttribute("class","hidden");
 
+ 
+
 });
 
 
 
+function GetUserData(){
+
+
+  let User = localStorage.getItem("newUsers");
+  if( User === null){       
+      User = [];
+       
+      }else{
+
+        User = JSON.parse(User);
+
+        for(let i=0;i<User.length;i++)
+           {
+
+            console.log("Hi"+User[i].name+" add card and show user last information");
+           }
+   
+
+  }    
+  return User;
+  
+}
+
+
+
+
+
+saveBtn.addEventListener('click',SaveUserData); 
+
+
+function SaveUserData(){
+
+
+  const users=GetUserData();
+  
+  const userName =  localStorage.getItem('user');
+  const userGender = localStorage.getItem('gender');
+  const userHeight = localStorage.getItem('height');
+  const userCurrentWeight = localStorage.getItem('weight');
+  const userGoalWeight = localStorage.getItem('user_goal_weight');
+  const userGainPound = (totalCalories[0]/3500).toFixed(2);
+
+  
+
+
+    const NewUser={
+
+      name :userName,
+      gender :userGender,
+      height :userHeight,
+      currentWeight :userCurrentWeight,
+      goalWeight: userGoalWeight,
+      gainPound :userGainPound
+  
+    }
+  
+for(let i=0;i<users.length;i++){
+  if(users[i].name === NewUser.name && users[i].gender == NewUser.gender && users[i].height === NewUser.height ){
+
+    users.splice(i,1);
+
+
+  }
+
+
+}
+    
+    users.push(NewUser);
+    let newUsers =JSON.stringify(users);
+    localStorage.setItem("newUsers", newUsers);
+
+
+
+
+}
