@@ -24,19 +24,31 @@
         </div>
         <div class="col s6" style="padding: 0 2%;">
             <h3 style="line-height: 1.3; margin: 0 0 5% 0; padding: 0;">Welcome back, <span id="userLogged"></span></h3>
-            <div class="row"  style="padding: 0 2%;">
-                <div class="col s4 z-depth-2" style="background-color: #fff; padding: 15px; margin: 0 2% 0 0;">
+            <div class="row"  style="padding: 0 0%;">
+                <div class="col s4">
                     <h5 style="font-weight: bold;">Your weight</h5>
                     <div>
                         <h4 id="showUserWeight" style="margin: 0; color: #C1DEBA; font-weight: bold;"></h4>
-                        <p style="background-color: #C1DEBA; padding: 5%; color: #fff; margin: 4% 0 0 0; font-weight: bold;" id="gain_weight"></p>
+                        <!-- <p style="background-color: #C1DEBA; padding: 5%; color: #fff; margin: 4% 0 0 0; font-weight: bold;" id="gain_weight"></p> -->
                     </div>
                 </div>
-                <div class="col s4 z-depth-2" style="background-color: #fff; padding: 15px; margin: 0 2% 0 0;">
+                <div class="col s4">
                     <h5 style="font-weight: bold;">Your goal</h5>
                     <div>
                         <h4 id="showUserGoalWeight" style="margin: 0; color: #C1DEBA; font-weight: bold;"></h4>
-                        <p style="background-color: rgba(255, 107, 107,1.0); padding: 5%; color: #fff; margin: 4% 0 0 0; font-weight: bold;" id="loose_weight"></p>
+                        <!-- <p style="background-color: rgba(255, 107, 107,1.0); padding: 5%; color: #fff; margin: 4% 0 0 0; font-weight: bold;" id="loose_weight"></p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <!-- <h5 style="font-weight: bold;">Your daily calories</h5> -->
+                    <div>
+                        <h5 style="margin: 0; color: #222; font-weight: bold;">You have <span id="show_day"></span> to reach your goal.</h5>
+                        <p id="sql">
+                        </p>
+                        <p style="padding: 1% 0; font-size: 17px;">Daily Calories <span style="background-color: #a2aca0; color: #fff; padding: 2%;" id="tbDaily"></span></p>
+                        <p id="tbToday" style="padding: 0% 0; font-size: 17px;">Today you've consumed <span style="background-color: #a2aca0; color: #fff; padding: 2%;">2000</span></p>
                     </div>
                 </div>
             </div>
@@ -67,6 +79,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <input id="timeLine" type="number" class="validate" placeholder="0 Day(s)">
+                        <label for="name" id="timeLine">Time Line</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                         <select id="userGender">
                           <option value="" disabled selected>What's your gender</option>
                           <option value="Female">Female</option>
@@ -78,12 +96,12 @@
                     <div class="input-field col s12">
                         <select id="userHeight">
                           <option value="" disabled selected>What's your height</option>
-                          <option value="fiveZero">5'0</option>
-                          <option value="fiveOne">5'1</option>
-                          <option value="fiveTwo">5'2</option>
-                          <option value="fiveThree">5'3</option>
-                          <option value="fiveFour">5'4</option>
-                          <option value="fiveFive">5'5</option>
+                          <option value="5'0">5'0</option>
+                          <option value="5'1">5'1</option>
+                          <option value="5'2">5'2</option>
+                          <option value="5'3">5'3</option>
+                          <option value="5'4">5'4</option>
+                          <option value="5'5">5'5</option>
                           <!-- <option value="fiveSix">5'6</option>
                           <option value="fiveSeven">5'7</option>
                           <option value="fiveHeight">5'8</option>
@@ -118,7 +136,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
     <script src="Assets/js/script.js"></script>
-    <script src="Assets/js/slider.js"></script>
+    <!-- <script src="Assets/js/slider.js"></script> -->
     <script src="Assets/js/int.js"></script>
     <script>
         // Or with jQuery

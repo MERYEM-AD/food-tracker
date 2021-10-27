@@ -1,6 +1,13 @@
 body{font-family: 'Balsamiq Sans', cursive; background-color: #f5f6fa;}
 .col { border-radius: 0px;}
-
+.loose{
+    background-color: rgba(255, 107, 107,1.0); padding: 2%; color: #fff; margin: 4% 0 0 0; font-weight: bold;
+    font-size: 17px;
+}
+.gain{
+    background-color: #a2aca0; padding: 2%; color: #fff; margin: 4% 0 0 0; font-weight: bold;
+    font-size: 17px;
+}
 
 /**** Search.html css***/
 
