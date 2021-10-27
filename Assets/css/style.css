@@ -9,13 +9,12 @@ body{font-family: 'Balsamiq Sans', cursive; background-color: #f5f6fa;}
     font-size: 17px;
 }
 
-/**** Search.html css***/
+/**** getstarted.html css***/
 
-/* .foodItems{
+.hidden{
 
-    border: none;
-    padding: 50px;
-}  */
+    display: none;
+}
 
 
 /*******************/
