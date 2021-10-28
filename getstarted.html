@@ -19,9 +19,9 @@
     <div id="header"></div>
     <!-- End Main Nav Bar -->
     <div class="row" style="padding: 5%;">
-        <div class="col s3" style="">    
-            <!-- Adding the form -->
-        
+        <div class="col s3">    
+            <div id="srcFrm">
+                <!-- Adding the form -->
                <form id= "search-form"  class="w-100 " >
         
                 <div class="input-field col s12">
@@ -42,9 +42,8 @@
              </div>
         
             <!-- End of Displaing food options -->
-        
-        
-                </div>
+            </div>
+        </div>
         
         
         
@@ -72,16 +71,19 @@
                     <!-- <h5 style="font-weight: bold;">Your daily calories</h5> -->
                     <div>
                         <h5 style="margin: 0; color: #222; font-weight: bold;">You have <span id="show_day"></span> to reach your goal.</h5>
-                        <p id="sql">
-                        </p>
-                        <p style="padding: 1% 0; font-size: 17px;">Daily Calories <span style="background-color: #a2aca0; color: #fff; padding: 2%;" id="tbDaily"></span></p>
-                        <p id="tbToday" style="padding: 0% 0; font-size: 17px;">Today you've consumed <span style="background-color: #a2aca0; color: #fff; padding: 2%;">2000</span></p>
+                        <p id="sql"></p>
+                        <p class="gain" id="dailyCal"></p>
+                        <!-- <p style="padding: 1% 0; font-size: 17px;">Daily Calories <span style="background-color: #a2aca0; color: #fff; padding: 2%;" id="tbDaily"></span></p> -->
                     </div>
+                </div>
+                <div class="col s12" style="text-align: right;">
+                    <p style="font-weight: bold; font-size: 17px;" id="getCal"></p>
+                    <p style="font-weight: bold; font-size: 17px;" id="lostCal"></p>
                 </div>
             </div>
 
             
-            <table class="FoodTable responsive-table ">
+            <table class="FoodTable responsive-table " id="fdTb">
                 
                 <thead>
                   <tr>
