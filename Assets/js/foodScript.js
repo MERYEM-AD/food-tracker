@@ -2,7 +2,8 @@
 
  //API variables:
  const applicationID ='6990414a';
- const apiKey='73f2989310d7983c9986662b0350079f';
+ const apiKey='3d8ad9f35d2437370735cde7b888087b';//73f2989310d7983c9986662b0350079f	
+
 
  //catch div that show up weight of the user 
  const weightDataDiv=document.querySelector(".weightDataDiv");
@@ -21,15 +22,12 @@
  const CofirmDiv_Btn=document.querySelector(".CofirmDiv_Btn");
   CofirmDiv_Btn.setAttribute("class","hidden");
 
- //show the final resault in the Final_Resault div
- const Final_Resault= document.querySelector(".Final_Resault");
+  const choicesDiv_Btn = document.querySelector(".choicesDiv_Btn");
 
- //404 page 
+ const dayConsumedCalories = document.querySelector("#dayConsumedCalories");
 
- const UnfoundedFood = "./404.html";
 
   
-
 
 
 //
@@ -46,7 +44,10 @@
 
 
    if(!searchInputVal){
-    return; // message
+
+   $( "#emptyVl" ).dialog();
+
+ return; // message
 
    }
 
@@ -57,10 +58,11 @@
    .then(function(response){
     if(response.status === 404){
 
+      $('#invalidFood').dialog();
+
+      
       return;
 
-      // console.log ("Sorry ,Unfounded Food ");
-      // document.location.href=UnfoundedFood;
       
     }else{
 
@@ -87,12 +89,15 @@
   .then( function(data){
   
     if(data.hits.length===0){
-      
-      console.log("food not founed ") ; // message 
 
+      $('#invalidFood').dialog();
+    
       return;
     }
     else {
+
+     // console.log(data.hits[0].recipe.dietLabels);
+
 
         for (let i=0;i<4;i++){ // we can Display 20 results
 
@@ -110,6 +115,11 @@
 
       const cardContent = document.createElement('div');
       const calorieDescription = document.createElement('p');
+      const dietLabelsDescription = document.createElement('p');
+      const cuisineTypeDescription = document.createElement('p');
+
+      
+      
 
       const cardAction = document.createElement('div');
       const btnAdd = document.createElement('button');
@@ -131,12 +141,14 @@
       foodname.textContent=data.hits[i].recipe.label;
 
 
-      cardContent.setAttribute("class","card-content");
-      calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" kcl";
+      cardContent.setAttribute("class","card-content descriptionCardContent");
+      calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" Cl";
+      dietLabelsDescription.textContent="   Diet :"+data.hits[i].recipe.dietLabels;
+      cuisineTypeDescription.textContent= "Cuisine :"+data.hits[i].recipe.cuisineType;
 
-      cardAction.setAttribute("class","card-action");
+      cardAction.setAttribute("class","card-action descriptionCardAction");
 
-      btnAdd.setAttribute("class","btn-floating btn-large waves-effect waves-light red");
+      btnAdd.setAttribute("class","btn-floating btn-Medium waves-effect waves-light red");
    
 
 
@@ -163,6 +175,8 @@
    
 
       cardContent.append(calorieDescription);
+      cardContent.append(dietLabelsDescription);
+      cardContent.append(cuisineTypeDescription);
 
       btnAdd.append(addIcon);
       cardAction.append(link);
@@ -202,11 +216,18 @@ confirmBtn.textContent ="Confirm";
  foodTotalCalories.setAttribute("style","border:none;");
  const totalCaloriesRow =document.createElement("tr");
  const totalCaloriescolum =  document.createElement("th");
+ const caloriesPlus =  document.createElement("th");
+ const caloriesMinus =  document.createElement("th");
  totalCaloriescolum.textContent="Total Calories : ";
+ caloriesPlus.textContent="Need :"
+ caloriesMinus.textContent="Get rid of ";
 
+
+ 
  //function AddFood
  function AddFood(event){
-  
+
+  foodTable.classList.remove("hidden")
   CofirmDiv_Btn.classList.remove("hidden");
 
   let foodName = event.target;
@@ -222,12 +243,14 @@ confirmBtn.textContent ="Confirm";
  const foodTabName = document.createElement("td");
  const foodTabCalorie = document.createElement("td");
  const deletefood = document.createElement("button");
+ const deleteIcon = document.createElement("i");
+ deleteIcon.setAttribute("class","Medium material-icons");
  
     let datafood = foodName.getAttribute("data-food");
    let  dataf = datafood.split("/******/");
 
    foodTabName.textContent=dataf[0];
-   foodTabCalorie.textContent=dataf[1]+" kcl";
+   foodTabCalorie.textContent=dataf[1]+" Cl";
    
    
    totalCalories.push(dataf[1]); // aray of caloies 
@@ -240,7 +263,10 @@ confirmBtn.textContent ="Confirm";
 
     foodTotalCalories.textContent="";
       somme = somme + parseFloat(totalCalories[i]);
-      totalCaloriescolum.textContent="Total Calories :"+somme.toFixed(2)+" kcl";
+      totalCaloriescolum.textContent="Total Calories :"+somme.toFixed(2)+" Cl = "+(somme/3500).toFixed(2)+" lb";
+      caloriesPlus.textContent="Need :"
+      caloriesMinus.textContent="Get rid of ";
+
       
    }
    totalCalories.length=0;
@@ -248,9 +274,9 @@ confirmBtn.textContent ="Confirm";
 
    
 
-   deletefood.setAttribute("class","delete_food");
+   deletefood.setAttribute("class","delete_food btn btn-small ");
    deletefood.setAttribute("data-calorie",dataf[1]);
-   deletefood.textContent="delete food";
+   deletefood.textContent="Remove Food";
 
   
 
@@ -262,6 +288,8 @@ confirmBtn.textContent ="Confirm";
    foodTable.append(foodTabbody);
 
    totalCaloriesRow.append(totalCaloriescolum);
+  totalCaloriesRow.append(caloriesPlus);
+  totalCaloriesRow.append(caloriesMinus);
    foodTotalCalories.append(totalCaloriesRow);
    foodTable.append(foodTotalCalories);
    CofirmDiv_Btn.append(confirmBtn);
@@ -289,7 +317,7 @@ deletefood.addEventListener('click',DeleteRow);
     totalCalories.length=0;
     totalCaloriescolum.textContent="";
     totalCalories.push((somme-datacalorie).toFixed(2));
-    totalCaloriescolum.textContent="Total Calories :"+(somme-datacalorie).toFixed(2)+" kcl";
+    totalCaloriescolum.textContent="Total Calories :"+(somme-datacalorie).toFixed(2)+" Cl = "+(totalCalories[0]/3500).toFixed(2)+" lb";
     deletebtn.parentElement.remove();
     //console.log( deletebtn.parentElement.nodeName); return  element name
 
@@ -303,73 +331,9 @@ deletefood.addEventListener('click',DeleteRow);
 
  //Display final ard of the user
 
- const userCard = document.querySelector(".userCard");
+ //const userCard = document.querySelector(".userCard");
 
- confirmBtn.addEventListener('click',function(){
-
- const showUserWeight= document.querySelector("#showUserWeight");
- const showUserGoalWeight= document.querySelector("#showUserGoalWeight");
-
- const userGender = document.createElement("p");
- const userHeight = document.createElement("p");
- const userCurrentWeight = document.createElement("p");
- const userGoalWeight = document.createElement("p");
- const userGainPound = document.createElement("p");
-
-
- 
- userGender.textContent ="Gender : "+localStorage.getItem('gender');
- userHeight.textContent="Height : "+localStorage.getItem('height');
- //pounds = calories ÷ 3500
- userGainPound.textContent = "You will gain "+(totalCalories[0]/3500).toFixed(2)+" lb";
- userCurrentWeight.textContent="Your current weight : "+showUserWeight.innerHTML+" lb";
- userGoalWeight.textContent = "Your goal weight : "+showUserGoalWeight.innerHTML+" lb";
-
-
-
- userCard.append(userGender);
- userCard.append(userHeight);
- userCard.append(userCurrentWeight);
- userCard.append(userGoalWeight);
- userCard.append(userGainPound);
-
- foodItems.textContent="";
- foodTable.setAttribute("class","hidden");
- weightDataDiv.setAttribute("class","hidden");
- CofirmDiv_Btn.setAttribute("class","hidden");
- Final_Resault.classList.remove("hidden");
-
-
- 
-
-
-});
-
-
-
-
-const saveBtn = document.querySelector("#save");
-const resetBtn = document.querySelector("#reset");
-
-
-
-
-
-
-resetBtn.addEventListener('click',function(){
-  totalCalories.length=0;
-  
- foodTable.classList.remove("hidden");
- foodTotalCalories.textContent='';
- foodTabbody.textContent='';
- weightDataDiv.classList.remove("hidden");
- userCard.textContent="";
- Final_Resault.setAttribute("class","hidden");
-
- 
-
-});
-
+ confirmBtn.addEventListener('click',SaveUserData);
 
 
 function GetUserData(){
@@ -397,12 +361,15 @@ function GetUserData(){
 
 
 
-
-
-saveBtn.addEventListener('click',SaveUserData); 
-
-
 function SaveUserData(){
+
+
+  foodTable.setAttribute("class","hidden");
+  CofirmDiv_Btn.setAttribute("class","hidden");
+  searchFormEl.setAttribute("class","hidden");
+  foodItems.textContent="";
+  dayConsumedCalories.textContent=totalCalories[0]+" Cl  = "+(totalCalories[0]/3500).toFixed(2)+" lb" ;
+
 
 
   const users=GetUserData();
@@ -412,6 +379,8 @@ function SaveUserData(){
   const userHeight = localStorage.getItem('height');
   const userCurrentWeight = localStorage.getItem('weight');
   const userGoalWeight = localStorage.getItem('user_goal_weight');
+  const userTimeline = localStorage.getItem('timeline');
+  const userDailyCalorie = localStorage.getItem('daily');
   const userGainPound = (totalCalories[0]/3500).toFixed(2);
 
   
@@ -424,26 +393,70 @@ function SaveUserData(){
       height :userHeight,
       currentWeight :userCurrentWeight,
       goalWeight: userGoalWeight,
+      timeline:userTimeline,
+      daily:userDailyCalorie,
       gainPound :userGainPound
   
     }
+
+ //   console.log(users);
   
 for(let i=0;i<users.length;i++){
-  if(users[i].name === NewUser.name && users[i].gender == NewUser.gender && users[i].height === NewUser.height ){
 
+  
+  if(users[i].name === NewUser.name && users[i].gender == NewUser.gender && users[i].height === NewUser.height){
+
+    
+    $('#ExistingUser').dialog();
     users.splice(i,1);
-
-
+    $('#NewUser').dialog('destroy').remove();
+   // return;
+   
+  }
+  else{
+    $('#NewUser').dialog();
   }
 
 
 }
+
+
     
-    users.push(NewUser);
-    let newUsers =JSON.stringify(users);
-    localStorage.setItem("newUsers", newUsers);
+users.push(NewUser);
+let newUsers =JSON.stringify(users);
+localStorage.setItem("newUsers", newUsers);
+choicesDiv_Btn.classList.remove('hidden');
 
 
+
+//window.location.href="getstarted.html";
 
 
 }
+
+
+const startOver = document.querySelector("#StartOver");
+const lastUpdate = document.querySelector("#LastUpdate");
+
+
+
+startOver.addEventListener('click',function(){
+
+  totalCalories.length=0;
+
+CardInfo1.setAttribute("class",'hidden'); /*** */
+CardInfo2.setAttribute("class",'hidden'); /*** */
+CardInfo3.setAttribute("class",'hidden'); /*** */
+searchFormEl.classList.remove("hidden");
+//choicesDiv_Btn.setAttribute("class",'hidden');
+//   foodTable.classList.remove("hidden");
+//   foodTotalCalories.textContent='';
+//   foodTabbody.textContent='';
+//   userCard.textContent="";
+//   Final_Resault.setAttribute("class","hidden");
+
+
+
+});
+
+lastUpdate.addEventListener('click',function(){}); //getdata user
