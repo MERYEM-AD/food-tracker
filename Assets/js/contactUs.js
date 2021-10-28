@@ -25,8 +25,10 @@ function sendEmail() {
         Subject: "Test"   
     })
     .then(function(message) {
-        alert("mail sent successfully")
+        alert("mail sent successfully");
     }).catch(function(error) {
         console.log(error);
     });
 }
+
+
