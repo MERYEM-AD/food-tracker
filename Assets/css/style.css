@@ -17,4 +17,16 @@ body{font-family: 'Balsamiq Sans', cursive; background-color: #f5f6fa;}
 }
 
 
+.descriptionCardAction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.descriptionCardContent{
+    color: brown;
+   font-family: 'Alfa Slab One', cursive;
+}
+
+
 /*******************/

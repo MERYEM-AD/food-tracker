@@ -33,7 +33,7 @@ if(user != "") {
 
     loginButton.addEventListener("click", function(){
     // e.preventDefault;
-    user = new Array(document.getElementById("username").value);
+    user = new Array(document.getElementById("username").value.trim().toUpperCase()); // add trim().toUpperCase()
     if( user != "" && user!=null) {
         setCookie("username", user, 30);
     }
@@ -57,8 +57,27 @@ function numberWithCommas(x) {
 }
 var saveUserBtn = document.getElementById("saveUserInfo");
 
+/**************************** */
+const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
+const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
+const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
+
+
+
+
+
+
 saveUserBtn.addEventListener("click", (e) => {
 e.preventDefault();
+
+
+CardInfo1.classList.remove('hidden'); /*** */
+CardInfo2.classList.remove('hidden'); /*** */
+CardInfo3.classList.remove('hidden'); /*** */
+
+searchInput.removeAttribute("disabled");/*** */
+
+
 
     var userGender = document.getElementById("userGender").value;
     var timeLine = document.getElementById("timeLine").value;
