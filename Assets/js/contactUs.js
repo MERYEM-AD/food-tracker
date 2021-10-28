@@ -1,9 +1,14 @@
+const contactusForm = document.querySelector('#contactusForm');
+
+contactusForm.addEventListener('submit',function(event){
+    event.preventDefault();
+
 function sendEmail() {
 
     let userName = document.getElementById("name").value
     let userEmail = document.getElementById("email").value
     let userMessage = document.getElementById("message").value
-
+    
 
         Email.send({
         // Host: "smtp.gmail.com",
@@ -21,4 +26,4 @@ function sendEmail() {
     });
 }
 
-button.addEventListener("click", sendEmail);
+btn.addEventListener("click", sendEmail);
