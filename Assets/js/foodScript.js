@@ -407,21 +407,17 @@ for(let i=0;i<users.length;i++){
   if(users[i].name === NewUser.name && users[i].gender == NewUser.gender && users[i].height === NewUser.height){
 
     
-    $('#ExistingUser').dialog();
+  //  $('#ExistingUser').dialog();
     users.splice(i,1);
-    $('#NewUser').dialog('destroy').remove();
-   // return;
    
   }
-  else{
-    $('#NewUser').dialog();
-  }
+  
 
 
 }
 
 
-    
+$('#SavedData').dialog();
 users.push(NewUser);
 let newUsers =JSON.stringify(users);
 localStorage.setItem("newUsers", newUsers);
