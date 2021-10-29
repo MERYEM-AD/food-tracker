@@ -23,7 +23,7 @@ function sendEmail() {
         Name: userName,
         Email: userEmail,
         Body: userMessage, 
-        Subject: "Test"   
+        Subject: "Message:"   
     })
     .then(function(message) {
         window.location.href = "thankyou.html";
