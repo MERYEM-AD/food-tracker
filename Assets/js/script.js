@@ -58,12 +58,6 @@ function numberWithCommas(x) {
 var saveUserBtn = document.getElementById("saveUserInfo");
 
 /**************************** */
-const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
-const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
-const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
-
-
-
 
 
 
@@ -203,32 +197,32 @@ if(dayToShow > 1){
 
 if(parseInt(goalWeightStr) < parseInt(weightStr)){
 
-    var totalLoose = weightStr - goalWeightStr;
+    // var totalLoose = weightStr - goalWeightStr;
 
-    var query = document.getElementById("sql");
-    query.classList.add("loose");
-    document.getElementById("dailyCal").classList.add("loose");
-    document.getElementById("srcFrm").classList.add("hidden");
-    document.getElementById("fdTb").classList.add("hidden");
-    var num = (3500 * totalLoose) / dayToShow;
-    var Dailynum = num / dayToShow;
-    var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
-    var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
-    query.innerHTML = "Loose: "+ numberWithCommas(roundNum) + " Calories";
-    document.getElementById("dailyCal").innerHTML = "You need to loose: "+ numberWithCommas(roundDailyCal) + " Daily";
-    document.getElementById("lostCal").innerHTML = "Today you lost: "+ 3000;
-    // console.log("Loose");
+    // var query = document.getElementById("sql");
+    // query.classList.add("loose");
+    // document.getElementById("dailyCal").classList.add("loose");
+    // document.getElementById("srcFrm").classList.add("hidden");
+    // document.getElementById("fdTb").classList.add("hidden");
+    // var num = (3500 * totalLoose) / dayToShow;
+    // var Dailynum = num / dayToShow;
+    // var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+    // var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
+    // query.innerHTML = "Loose: "+ numberWithCommas(roundNum) + " Calories";
+    // document.getElementById("dailyCal").innerHTML = "You need to loose: "+ numberWithCommas(roundDailyCal) + " Daily";
+    // document.getElementById("lostCal").innerHTML = "Today you lost: "+ 3000;
+    // // console.log("Loose");
 }else {
-    var totalLoose = goalWeightStr - weightStr;
-    var query = document.getElementById("sql");
-    query.classList.add("gain");
-    document.getElementById("dailyCal").classList.add("gain");
-    var num = (3500 * totalLoose) / dayToShow;
-    var Dailynum = num / dayToShow;
-    var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
-    var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
-    query.innerHTML = "Gain: "+ numberWithCommas(roundNum) + " Calories";
-    document.getElementById("dailyCal").innerHTML = "Your daily calories: "+ numberWithCommas(roundDailyCal);
-    document.getElementById("getCal").innerHTML = "Today you gained: "+ 3000;
-    // console.log("Loose")
+    // var totalLoose = goalWeightStr - weightStr;
+    // var query = document.getElementById("sql");
+    // query.classList.add("gain");
+    // document.getElementById("dailyCal").classList.add("gain");
+    // var num = (3500 * totalLoose) / dayToShow;
+    // var Dailynum = num / dayToShow;
+    // var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+    // var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
+    // query.innerHTML = "Gain: "+ numberWithCommas(roundNum) + " Calories";
+    // document.getElementById("dailyCal").innerHTML = "Your daily calories: "+ numberWithCommas(roundDailyCal);
+    // document.getElementById("getCal").innerHTML = "Today you gained: "+ 3000;
+    // // console.log("Loose")
 }
