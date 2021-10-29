@@ -29,7 +29,8 @@
         
                 <div class="input-field col s12">
                     <label for="Food Name ">Search Food :</label>
-                    <input id="search-input" type="text" disabled placeholder="e.g., Apples, Milk, Pizza,.." class="validate">
+                    <input id="search-input" type="text" disabled  placeholder="e.g., Apples, Milk, Pizza,.." class="validate">
+                    <!-- disabled -->
                     <button class="btn" id="btnSearch" style="background-color: #303E2C; box-shadow: none; color:#fff;">Search</button>
                 </div>
         
@@ -58,14 +59,15 @@
             <h3 style="line-height: 1.3; margin: 0 0 5% 0; padding: 0;">Welcome back, <span id="userLogged"></span></h3>
             <button id="logout">LOG OUT </button> 
             <div class="row"  style="padding: 0 0%;">
-                <div class="  CardInfo1 hidden col s4">
+                <div class=" CardInfo1 hidden col s4"> 
+                    <!-- add hideen class -->
                     <h5 style="font-weight: bold;">Your weight</h5>
                     <div>
                         <h4 id="showUserWeight" style="margin: 0; color: #C1DEBA; font-weight: bold;"></h4>
                         <!-- <p style="background-color: rgba(255, 107, 107,1.0); padding: 5%; color: #fff; margin: 4% 0 0 0; font-weight: bold;" id="loose_weight"></p> -->
                     </div>
                 </div>
-                <div class=" CardInfo2 hidden col s4">
+                <div class="CardInfo2 hidden  col s4">
                     <h5 style="font-weight: bold;">Your goal</h5>
                     <div>
                         <h4 id="showUserGoalWeight" style="margin: 0; color: #C1DEBA; font-weight: bold;"></h4>
@@ -73,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" CardInfo3 hidden row">
+            <div class="CardInfo3 hidden  row">
 
                 <!-- hide this div until the user want to cobfirm his registration / changes -->
                 <div class="col s12">
@@ -112,17 +114,32 @@
             </div>
 
 
-            <!-- Dialog for  Saved User data -->
+            <!-- Dialog for Saved Data User -->
 
-            <div class="hidden" id="NewUser"  title="congratulations !!">Data Saved Successfully</div>
+            <div class="hidden" id="SavedDataUser"  title="congratulations !!">Data Saved Successfully</div>
 
 
             <!-- Add Start over btn and see Last Update -->
-        <div class="choicesDiv_Btn hidden">
-            <button id="StartOver"> Start Over</button>
-            <button id =LastUpdate> See your Last Update </button>
+        <div class=" hidden choicesDiv_Btn">
+            <button class="waves-effect waves-light btn-large"  id="StartOver"> Start Over</button>
+            <button class="waves-effect waves-light btn-large modal-trigger" href="#modal1" id =LastUpdate> See your Last Update </button>
   
         </div>
+
+
+
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+                
 
         </div>
         <div class="col s3 z-depth-2" style="background-color: #fff; padding: 2%; ">
@@ -208,6 +225,12 @@
         $('.sidenav').sidenav();
         $('select').formSelect();
     });
+</script>
+<script>
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
 </script>
 </body>
 </html>

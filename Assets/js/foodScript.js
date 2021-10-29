@@ -434,17 +434,30 @@ choicesDiv_Btn.classList.remove('hidden');
 const startOver = document.querySelector("#StartOver");
 const lastUpdate = document.querySelector("#LastUpdate");
 
-
+const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
+const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
+const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
 
 startOver.addEventListener('click',function(){
 
   totalCalories.length=0;
 
-CardInfo1.setAttribute("class",'hidden'); /*** */
-CardInfo2.setAttribute("class",'hidden'); /*** */
-CardInfo3.setAttribute("class",'hidden'); /*** */
+CardInfo1.setAttribute("class",'hidden'); 
+CardInfo2.setAttribute("class",'hidden'); 
+CardInfo3.setAttribute("class",'hidden'); 
 searchFormEl.classList.remove("hidden");
-//choicesDiv_Btn.setAttribute("class",'hidden');
+
+
+choicesDiv_Btn.setAttribute("class",'hidden');
+
+
+totalCalories.length=0;
+  
+// foodTable.classList.remove("hidden");
+foodTotalCalories.textContent='';
+foodTabbody.textContent='';
+userCard.textContent="";
+
 //   foodTable.classList.remove("hidden");
 //   foodTotalCalories.textContent='';
 //   foodTabbody.textContent='';
@@ -455,4 +468,8 @@ searchFormEl.classList.remove("hidden");
 
 });
 
-lastUpdate.addEventListener('click',function(){}); //getdata user
+lastUpdate.addEventListener('click',function(){
+
+// crate card 
+
+}); //getdata user
