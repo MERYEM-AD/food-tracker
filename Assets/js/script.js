@@ -78,6 +78,7 @@ searchInput.removeAttribute("disabled");/*** */
     var userHeight = document.getElementById("userHeight").value;
     var userWeight = document.getElementById("weight").value;
     var userGoalWeight = document.getElementById("goal_weight").value;
+
     // Store
     localStorage.setItem("user", user);
     localStorage.setItem("gender", userGender);

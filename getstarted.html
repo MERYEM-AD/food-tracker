@@ -56,8 +56,10 @@
                 </div>
         
         <div class="col s6" style="padding: 0 2%;">
+            <div style="display: flex;justify-content: space-between;" >
             <h3 style="line-height: 1.3; margin: 0 0 5% 0; padding: 0;">Welcome back, <span id="userLogged"></span></h3>
-            <button id="logout">LOG OUT </button> 
+            <button class="waves-effect waves-light btn-large modal-trigger" href="#modal1" id =LastUpdate>Last Update </button>
+        </div>
             <div class="row"  style="padding: 0 0%;">
                 <div class=" CardInfo1 hidden col s4"> 
                     <!-- add hideen class -->
@@ -120,11 +122,9 @@
 
 
             <!-- Add Start over btn and see Last Update -->
-        <div class=" hidden choicesDiv_Btn">
-            <button class="waves-effect waves-light btn-large"  id="StartOver"> Start Over</button>
-            <button class="waves-effect waves-light btn-large modal-trigger" href="#modal1" id =LastUpdate> See your Last Update </button>
-  
-        </div>
+        <!-- <div class=" choicesDiv_Btn"> -->
+            <button class="waves-effect waves-light btn-large hidden"  id="StartOver"> Start Over</button>
+        <!-- </div> -->
 
 
 
@@ -132,11 +132,27 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
           <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <h4> </h4>
+            <div class="row">
+          
+                  <div class="card small light-green lighten-3">
+                    <div class=" UserCard card-content white-text">
+                      <span class="card-title"  style="background-color: brown;">Your Last Sign In : <span id ="LSignIn"> October 22, 2021 09:49 AM EDT</span></span>
+
+                   <ul >UserName : <span id="UName"></span></ul>
+                      <li>Gender :<span id="UGender"></span></li>
+                      <li>Height:<span id="UHeight"></span></li>
+                      <li>Current Weight :<span id="UCurrentWeight"></span></li>
+                      <li>Goal Weight :<span id="UGoalWeight"></span></li>
+                      <li>Days Number for reaching the Goal Weight :<span id="goalDaysNumber"></span></li>
+                      <li>Dialy consumed Calories :<span id="dailyConsumedCalories"></span></li>
+                      <li>Total calories of list food :<span id="ttCalories_FoodList"></span></li>
+                    
+                    </div>
+                  </div>
+               
+              </div>
+
           </div>
         </div>
                 
@@ -217,6 +233,9 @@
     <!-- Adding jquery-ui.js to user jquery UI Dialog -->
 
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script> 
+
+<!-- Adding Moment js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <script>
     // Or with jQuery

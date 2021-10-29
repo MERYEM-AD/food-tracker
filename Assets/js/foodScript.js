@@ -27,6 +27,10 @@
  const dayConsumedCalories = document.querySelector("#dayConsumedCalories");
 
 
+ 
+const startOver = document.querySelector("#StartOver");
+const lastUpdate = document.querySelector("#LastUpdate");
+
   
 
 
@@ -331,7 +335,19 @@ deletefood.addEventListener('click',DeleteRow);
 
  //Display final ard of the user
 
- //const userCard = document.querySelector(".userCard");
+ const UserCard = document.querySelector(".UserCard");
+ const LSignIn = document.querySelector("#LSignIn");
+ const UName = document.querySelector("#UName");
+ const UGender = document.querySelector("#UGender");
+ const UHeight = document.querySelector("#UHeight");
+ const UCurrentWeight = document.querySelector("#UCurrentWeight");
+ const UGoalWeight = document.querySelector("#UGoalWeight");
+ const goalDaysNumber = document.querySelector("#goalDaysNumber");
+ const dailyConsumedCalories = document.querySelector("#dailyConsumedCalories");
+ const ttCalories_FoodList= document.querySelector("#ttCalories_FoodList");
+
+
+
 
  confirmBtn.addEventListener('click',SaveUserData);
 
@@ -342,15 +358,33 @@ function GetUserData(){
   let User = localStorage.getItem("newUsers");
   if( User === null){       
       User = [];
+  LSignIn.textContent=moment(); 
+  UName.textContent=document.getElementById("userLogged").innerHTML;
+  UGender.textContent= "No Information";
+  UHeight.textContent="No Information";
+  UCurrentWeight.textContent="No Information";
+  UGoalWeight.textContent="No Information";
+  goalDaysNumber.textContent="No Information";
+  dailyConsumedCalories.textContent="No Information";
+  ttCalories_FoodList.textContent= "0 Cal";  
+
        
       }else{
 
         User = JSON.parse(User);
 
-        for(let i=0;i<User.length;i++)
+        for(let i=User.length-1;i<User.length;i++) // for 1 user  we will last saved data from the array object
            {
-
-            console.log("Hi"+User[i].name+" add card and show user last information");
+      
+            LSignIn.textContent=User[i].LastSignIn; 
+            UName.textContent=User[i].name;
+            UGender.textContent= User[i].gender;
+            UHeight.textContent=User[i].height;
+            UCurrentWeight.textContent=User[i].currentWeight;
+            UGoalWeight.textContent=User[i].goalWeight;
+            goalDaysNumber.textContent=User[i].timeline;
+            dailyConsumedCalories.textContent=User[i].daily;
+            ttCalories_FoodList.textContent=User[i].ttCal_FoodList;
            }
    
 
@@ -381,7 +415,7 @@ function SaveUserData(){
   const userGoalWeight = localStorage.getItem('user_goal_weight');
   const userTimeline = localStorage.getItem('timeline');
   const userDailyCalorie = localStorage.getItem('daily');
-  const userGainPound = (totalCalories[0]/3500).toFixed(2);
+  const ttCal_FoodList = (totalCalories[0]/3500).toFixed(2);
 
   
 
@@ -395,7 +429,8 @@ function SaveUserData(){
       goalWeight: userGoalWeight,
       timeline:userTimeline,
       daily:userDailyCalorie,
-      gainPound :userGainPound
+      ttCal_FoodList :ttCal_FoodList,
+      LastSignIn :moment()
   
     }
 
@@ -421,18 +456,14 @@ $('#SavedData').dialog();
 users.push(NewUser);
 let newUsers =JSON.stringify(users);
 localStorage.setItem("newUsers", newUsers);
-choicesDiv_Btn.classList.remove('hidden');
+startOver.classList.remove('hidden');
 
 
-
-//window.location.href="getstarted.html";
 
 
 }
 
 
-const startOver = document.querySelector("#StartOver");
-const lastUpdate = document.querySelector("#LastUpdate");
 
 const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
 const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
@@ -441,35 +472,11 @@ const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
 startOver.addEventListener('click',function(){
 
   totalCalories.length=0;
-
-CardInfo1.setAttribute("class",'hidden'); 
-CardInfo2.setAttribute("class",'hidden'); 
-CardInfo3.setAttribute("class",'hidden'); 
-searchFormEl.classList.remove("hidden");
-
-
-choicesDiv_Btn.setAttribute("class",'hidden');
-
-
-totalCalories.length=0;
-  
-// foodTable.classList.remove("hidden");
 foodTotalCalories.textContent='';
 foodTabbody.textContent='';
-userCard.textContent="";
-
-//   foodTable.classList.remove("hidden");
-//   foodTotalCalories.textContent='';
-//   foodTabbody.textContent='';
-//   userCard.textContent="";
-//   Final_Resault.setAttribute("class","hidden");
-
-
+searchFormEl.classList.remove("hidden");
+startOver.setAttribute("class","waves-effect waves-light btn-large hidden");
 
 });
 
-lastUpdate.addEventListener('click',function(){
-
-// crate card 
-
-}); //getdata user
+lastUpdate.addEventListener('click',GetUserData); //getdata user
