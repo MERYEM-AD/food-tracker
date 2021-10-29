@@ -33,8 +33,4 @@ function sendEmail() {
     });
 }
 
-<<<<<<< HEAD
-button.addEventListener("click", sendEmail);
-=======
 
->>>>>>> a4f7fefe1509bd125850a687b58da0d527f566fa
