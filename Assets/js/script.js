@@ -33,7 +33,7 @@ if(user != "") {
 
     loginButton.addEventListener("click", function(){
     // e.preventDefault;
-    user = new Array(document.getElementById("username").value);
+    user = new Array(document.getElementById("username").value.trim().toUpperCase()); // add trim().toUpperCase()
     if( user != "" && user!=null) {
         setCookie("username", user, 30);
     }
@@ -57,8 +57,27 @@ function numberWithCommas(x) {
 }
 var saveUserBtn = document.getElementById("saveUserInfo");
 
+/**************************** */
+const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
+const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
+const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
+
+
+
+
+
+
 saveUserBtn.addEventListener("click", (e) => {
 e.preventDefault();
+
+
+CardInfo1.classList.remove('hidden'); /*** */
+CardInfo2.classList.remove('hidden'); /*** */
+CardInfo3.classList.remove('hidden'); /*** */
+
+searchInput.removeAttribute("disabled");/*** */
+
+
 
     var userGender = document.getElementById("userGender").value;
     var timeLine = document.getElementById("timeLine").value;
@@ -83,17 +102,28 @@ e.preventDefault();
 
         var query = document.getElementById("sql");
         query.classList.add("loose");
+        document.getElementById("dailyCal").classList.add("loose");
         var num = (3500 * totalLoose) / timeLine;
+        var Dailynum = num / timeLine;
         var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+        var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
         query.innerHTML = "Loose: "+ numberWithCommas(roundNum) + " Calories";
+        document.getElementById("dailyCal").innerHTML = "You need to loose: "+ numberWithCommas(roundDailyCal) + "Daily";
+        document.getElementById("lostCal").innerHTML = "Today you lost: "+ 3000;
+
     }else{
         var totalLoose = userGoalWeight - userWeight;
 
         var query = document.getElementById("sql");
         query.classList.add("gain");
+        document.getElementById("dailyCal").classList.add("gain");
         var num = (3500 * totalLoose) / timeLine;
+        var Dailynum = num / timeLine;
         var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+        var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
         query.innerHTML = "Gain: "+ numberWithCommas(roundNum) + " Calories";
+        document.getElementById("dailyCal").innerHTML = "Your daily calories: "+ numberWithCommas(roundDailyCal);
+        document.getElementById("getCal").innerHTML = "Today you gained: "+ 3000;
     }
 
     var strGender = localStorage.getItem("gender");
@@ -102,7 +132,7 @@ e.preventDefault();
     if(strGender == "Male"){
 
         localStorage.setItem("daily", localWeight.Male.dailyCalories);
-        document.getElementById("tbDaily").innerHTML = localWeight.Male.dailyCalories;
+        // document.getElementById("tbDaily").innerHTML = localWeight.Male.dailyCalories;
         if(userHeight == "5'1" ){
 
             if(strHeight == localWeight.Male.fiveOne){
@@ -128,7 +158,7 @@ e.preventDefault();
 
     }else if(strGender == "Female") {
         localStorage.setItem("daily", localWeight.Female.dailyCalories);
-        document.getElementById("tbDaily").innerHTML = localWeight.Male.dailyCalories;
+        // document.getElementById("tbDaily").innerHTML = localWeight.Male.dailyCalories;
         if(userHeight == "5'0" ){
 
             if(strHeight == localWeight.Female.fiveZero){
@@ -162,7 +192,6 @@ var goalWeightStr = localStorage.getItem("user_goal_weight");
 var weightStr = localStorage.getItem("weight");
 
 document.getElementById("showUserWeight").innerHTML = weightStr;
-document.getElementById("tbDaily").innerHTML = localStorage.getItem("daily");
 var dayToShow = localStorage.getItem("timeline");
 if(dayToShow > 1){
     document.getElementById("show_day").innerHTML = dayToShow+" days";
@@ -178,16 +207,28 @@ if(parseInt(goalWeightStr) < parseInt(weightStr)){
 
     var query = document.getElementById("sql");
     query.classList.add("loose");
+    document.getElementById("dailyCal").classList.add("loose");
+    document.getElementById("srcFrm").classList.add("hidden");
+    document.getElementById("fdTb").classList.add("hidden");
     var num = (3500 * totalLoose) / dayToShow;
+    var Dailynum = num / dayToShow;
     var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+    var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
     query.innerHTML = "Loose: "+ numberWithCommas(roundNum) + " Calories";
+    document.getElementById("dailyCal").innerHTML = "You need to loose: "+ numberWithCommas(roundDailyCal) + " Daily";
+    document.getElementById("lostCal").innerHTML = "Today you lost: "+ 3000;
     // console.log("Loose");
 }else {
     var totalLoose = goalWeightStr - weightStr;
     var query = document.getElementById("sql");
     query.classList.add("gain");
+    document.getElementById("dailyCal").classList.add("gain");
     var num = (3500 * totalLoose) / dayToShow;
+    var Dailynum = num / dayToShow;
     var roundNum = Math.round((num + Number.EPSILON) * 100) / 100
+    var roundDailyCal = Math.round((Dailynum + Number.EPSILON) * 100) / 100
     query.innerHTML = "Gain: "+ numberWithCommas(roundNum) + " Calories";
+    document.getElementById("dailyCal").innerHTML = "Your daily calories: "+ numberWithCommas(roundDailyCal);
+    document.getElementById("getCal").innerHTML = "Today you gained: "+ 3000;
     // console.log("Loose")
 }
