@@ -18,7 +18,7 @@ The application will then calculate the calories and will notify the user how ma
 
 ### User story: 
 
-As a user, I want to be able to track my calories and/or food nutrition so I can maintain my weight.
+As a athlete, I want to be able to track my calories and/or food nutrition so I can maintain my weight.
 
 
 ### Process:
