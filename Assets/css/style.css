@@ -5,16 +5,10 @@ body{font-family: 'Balsamiq Sans', cursive; background-color: #f5f6fa;}
     font-size: 17px;
 }
 .gain{
-    background-color: #a2aca0; padding: 2%; color: #fff; margin: 4% 0 0 0; font-weight: bold;
+    background-color: #C1DEBA; padding: 2%; color: #fff; margin: 4% 0 0 0; font-weight: bold;
     font-size: 17px;
 }
 
-.darkButton{
-
-    background-color: #303E2C; 
-    box-shadow: none;
-     color:#fff;
-}
 /**** getstarted.html css***/
 
 .hidden{
@@ -34,8 +28,5 @@ body{font-family: 'Balsamiq Sans', cursive; background-color: #f5f6fa;}
    font-family: 'Alfa Slab One', cursive;
 }
 
-.UserCardTitle,li{
 
-    color:#3e2723;
-}
 /*******************/
