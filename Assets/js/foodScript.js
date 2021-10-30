@@ -146,7 +146,7 @@ const lastUpdate = document.querySelector("#LastUpdate");
 
 
       cardContent.setAttribute("class","card-content descriptionCardContent");
-      calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" Cl";
+      calorieDescription.textContent="Calories : "+(data.hits[i].recipe.calories).toFixed(2)+" Cal";
       dietLabelsDescription.textContent="   Diet :"+data.hits[i].recipe.dietLabels;
       cuisineTypeDescription.textContent= "Cuisine :"+data.hits[i].recipe.cuisineType;
 
@@ -220,11 +220,11 @@ confirmBtn.textContent ="Confirm";
  foodTotalCalories.setAttribute("style","border:none;");
  const totalCaloriesRow =document.createElement("tr");
  const totalCaloriescolum =  document.createElement("th");
- const caloriesPlus =  document.createElement("th");
- const caloriesMinus =  document.createElement("th");
+//  const caloriesPlus =  document.createElement("th");
+//  const caloriesMinus =  document.createElement("th");
  totalCaloriescolum.textContent="Total Calories : ";
- caloriesPlus.textContent="Need :"
- caloriesMinus.textContent="Get rid of ";
+//  caloriesPlus.textContent="Need :"
+//  caloriesMinus.textContent="Get rid of ";
 
 
  
@@ -267,9 +267,9 @@ confirmBtn.textContent ="Confirm";
 
     foodTotalCalories.textContent="";
       somme = somme + parseFloat(totalCalories[i]);
-      totalCaloriescolum.textContent="Total Calories :"+somme.toFixed(2)+" Cl = "+(somme/3500).toFixed(2)+" lb";
-      caloriesPlus.textContent="Need :"
-      caloriesMinus.textContent="Get rid of ";
+      totalCaloriescolum.textContent="Total Calories :"+somme.toFixed(2)+" Cal = "+(somme/3500).toFixed(2)+" lb";
+      // caloriesPlus.textContent="Need :"
+      // caloriesMinus.textContent="Get rid of ";
 
       
    }
@@ -292,8 +292,8 @@ confirmBtn.textContent ="Confirm";
    foodTable.append(foodTabbody);
 
    totalCaloriesRow.append(totalCaloriescolum);
-  totalCaloriesRow.append(caloriesPlus);
-  totalCaloriesRow.append(caloriesMinus);
+  // totalCaloriesRow.append(caloriesPlus);
+  // totalCaloriesRow.append(caloriesMinus);
    foodTotalCalories.append(totalCaloriesRow);
    foodTable.append(foodTotalCalories);
    CofirmDiv_Btn.append(confirmBtn);
@@ -321,7 +321,7 @@ deletefood.addEventListener('click',DeleteRow);
     totalCalories.length=0;
     totalCaloriescolum.textContent="";
     totalCalories.push((somme-datacalorie).toFixed(2));
-    totalCaloriescolum.textContent="Total Calories :"+(somme-datacalorie).toFixed(2)+" Cl = "+(totalCalories[0]/3500).toFixed(2)+" lb";
+    totalCaloriescolum.textContent="Total Calories :"+(somme-datacalorie).toFixed(2)+" Cal = "+(totalCalories[0]/3500).toFixed(2)+" lb";
     deletebtn.parentElement.remove();
     //console.log( deletebtn.parentElement.nodeName); return  element name
 
@@ -334,8 +334,6 @@ deletefood.addEventListener('click',DeleteRow);
 
 
  //Display final ard of the user
-
- const UserCard = document.querySelector(".UserCard");
  const LSignIn = document.querySelector("#LSignIn");
  const UName = document.querySelector("#UName");
  const UGender = document.querySelector("#UGender");
@@ -360,13 +358,13 @@ function GetUserData(){
       User = [];
   LSignIn.textContent=moment(); 
   UName.textContent=document.getElementById("userLogged").innerHTML;
-  UGender.textContent= "No Information";
-  UHeight.textContent="No Information";
-  UCurrentWeight.textContent="No Information";
-  UGoalWeight.textContent="No Information";
-  goalDaysNumber.textContent="No Information";
-  dailyConsumedCalories.textContent="No Information";
-  ttCalories_FoodList.textContent= "0 Cal";  
+  UGender.textContent= "...";
+  UHeight.textContent="...";
+  UCurrentWeight.textContent="...";
+  UGoalWeight.textContent="...";
+  goalDaysNumber.textContent="...";
+  dailyConsumedCalories.textContent="...";
+  ttCalories_FoodList.textContent= "...";  
 
        
       }else{
@@ -402,7 +400,7 @@ function SaveUserData(){
   CofirmDiv_Btn.setAttribute("class","hidden");
   searchFormEl.setAttribute("class","hidden");
   foodItems.textContent="";
-  dayConsumedCalories.textContent=totalCalories[0]+" Cl  = "+(totalCalories[0]/3500).toFixed(2)+" lb" ;
+  dayConsumedCalories.textContent=totalCalories[0]+" Cal  = "+(totalCalories[0]/3500).toFixed(2)+" lb" ;
 
 
 
@@ -430,7 +428,7 @@ function SaveUserData(){
       timeline:userTimeline,
       daily:userDailyCalorie,
       ttCal_FoodList :ttCal_FoodList,
-      LastSignIn :moment()
+      LastSignIn :moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
   
     }
 
@@ -451,8 +449,8 @@ for(let i=0;i<users.length;i++){
 
 }
 
+$( "#SavedDataUser" ).dialog();
 
-$('#SavedData').dialog();
 users.push(NewUser);
 let newUsers =JSON.stringify(users);
 localStorage.setItem("newUsers", newUsers);

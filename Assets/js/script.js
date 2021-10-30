@@ -33,7 +33,7 @@ if(user != "") {
 
     loginButton.addEventListener("click", function(){
     // e.preventDefault;
-    user = new Array(document.getElementById("username").value.trim().toUpperCase()); // add trim().toUpperCase()
+    user = new Array(document.getElementById("username").value); // add trim().toUpperCase()
     if( user != "" && user!=null) {
         setCookie("username", user, 30);
     }
