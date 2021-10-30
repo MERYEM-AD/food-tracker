@@ -31,7 +31,7 @@
                     <label for="Food Name ">Search Food :</label>
                     <input id="search-input" type="text" disabled  placeholder="e.g., Apples, Milk, Pizza,.." class="validate">
                     <!-- disabled -->
-                    <button class="btn darkButton" id="btnSearch">Search</button>
+                    <button class="btn  btn-small" style="background: #303E2C; color: #fff;" id="btnSearch">Search</button>
                 </div>
         
              </form>
@@ -58,7 +58,7 @@
         <div class="col s6" style="padding: 0 2%;">
             <div style="display: flex;justify-content: space-between;" >
             <h3 style="line-height: 1.3; margin: 0 0 5% 0; padding: 0;">Welcome back, <span id="userLogged"></span></h3>
-            <button class="waves-effect waves-light btn-large darkButton modal-trigger" href="#modal1" id ="LastUpdate" >Last Update </button>
+            <button class="waves-effect waves-light btn-large modal-trigger btn-small" style="background: #303E2C; color: #fff; cursor: pointer;" href="#modal1" id ="LastUpdate" >Last Update </button>
         </div>
             <div class="row"  style="padding: 0 0%;">
                 <div class=" CardInfo1 hidden col s4"> 
@@ -84,10 +84,35 @@
                     <!-- <h5 style="font-weight: bold;">Your daily calories</h5> -->
                     <div>
                         <h5 style="margin: 0; color: #222; font-weight: bold;">You have <span id="show_day"></span> to reach your goal.</h5>
-                        <p id="sql">
-                        </p>
-                        <p style="padding: 1% 0; font-size: 17px;">Daily Calories <span style="background-color: #a2aca0; color: #fff; padding: 2%;" id="tbDaily"></span></p>
-                        <p id="tbToday" style="padding: 0% 0; font-size: 17px;">Today you've consumed <span id ="dayConsumedCalories" style="background-color: #a2aca0; color: #fff; padding: 2%;">...</span></p>
+                        <p id="sql"></p>
+                        <p id="daily_lost"></p>
+
+                        <div id="daysTable" class="col s12 hidden" style="padding: 3% 0;">
+                            <h6>Daily Calories</h6>
+                                <!-- Modal Trigger -->
+                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">View Now</a>
+
+                                <!-- Modal Structure -->
+                                <div id="modal1" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Daily Calories</h4>
+                                        <div id="displayTable">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            <!-- <table>
+
+                            </table> -->
+                        </div>
+                        <!-- <p style="padding: 1% 0; font-size: 17px;">Daily Calories <span style="background-color: #a2aca0; color: #fff; padding: 2%;" id="tbDaily"></span></p> -->
+                        <p id="tbToday" style="padding: 0% 0; font-size: 17px;"><span style="color: #a2aca0;"></span></p>
+                        <a class="collection-item show_badg hidden" style="font-size: 17px; color:#222;">
+                            <i class="material-icons">restaurant</i>
+                            <span class="new badge" id ="dayConsumedCalories" style="height: 25px; line-height: 25px; font-size: 15px; background-color: #f39c12;"></span>You've consumed</a>
                     </div>
                 </div>
 
@@ -123,7 +148,7 @@
 
             <!-- Add Start over btn and see Last Update -->
         <!-- <div class=" choicesDiv_Btn"> -->
-            <button class="waves-effect waves-light btn-large hidden darkButton"  id="StartOver" style="width:100%"> Start Over</button>
+            <button class="waves-effect waves-light btn-large hidden btn-small" style="background: #303E2C; color: #fff;"  id="StartOver" style="width:100%"> Start Over</button>
         <!-- </div> -->
 
 
@@ -228,6 +253,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
     <script src="Assets/js/foodScript.js"></script>
     <script src="Assets/js/script.js"></script>
+<!-- moment lib -->
+<script src='https://cdn.jsdelivr.net/npm/moment@2.27.0/min/moment.min.js'></script>
+
+<!-- fullcalendar bundle -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js'></script>
+
+<!-- the moment-to-fullcalendar connector. must go AFTER the moment lib -->
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment@5.5.0/main.global.min.js'></script>
     <!-- <script src="Assets/js/slider.js"></script> -->
     <script src="Assets/js/int.js"></script>
 
