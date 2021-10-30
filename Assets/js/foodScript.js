@@ -1,4 +1,4 @@
- /***************** Declaration of variables :/*********** */
+/***************** Declaration of variables :/*********** */
 
  //API variables:
  const applicationID ='6990414a';
@@ -401,6 +401,8 @@ function SaveUserData(){
   searchFormEl.setAttribute("class","hidden");
   foodItems.textContent="";
   dayConsumedCalories.textContent=totalCalories[0]+" Cal  = "+(totalCalories[0]/3500).toFixed(2)+" lb" ;
+  // dayConsumedCalories.textContent="You've consumed "+localStorage.getItem("totalCalories")+" Cal  = "+(localStorage.getItem("totalCalories")/3500).toFixed(2)+" lb" ;
+  localStorage.setItem("totalCalories", totalCalories[0]);
 
 
 
@@ -461,15 +463,11 @@ startOver.classList.remove('hidden');
 
 }
 
-
-
-const CardInfo1 =document.querySelector(".CardInfo1"); /*** */
-const CardInfo2 =document.querySelector(".CardInfo2"); /*** */
-const CardInfo3 =document.querySelector(".CardInfo3"); /*** */
+// Was here
 
 startOver.addEventListener('click',function(){
 
-  totalCalories.length=0;
+totalCalories.length=0;
 foodTotalCalories.textContent='';
 foodTabbody.textContent='';
 searchFormEl.classList.remove("hidden");
