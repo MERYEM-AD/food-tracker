@@ -2,7 +2,7 @@
 
  //API variables:
  const applicationID ='6990414a';
- const apiKey='3d8ad9f35d2437370735cde7b888087b';//73f2989310d7983c9986662b0350079f	
+ const apiKey='3d8ad9f35d2437370735cde7b888087b'; // last Key api : 73f2989310d7983c9986662b0350079f	
 
 
  //catch div that show up weight of the user 
@@ -22,19 +22,16 @@
  const CofirmDiv_Btn=document.querySelector(".CofirmDiv_Btn");
   CofirmDiv_Btn.setAttribute("class","hidden");
 
-  const choicesDiv_Btn = document.querySelector(".choicesDiv_Btn");
 
  const dayConsumedCalories = document.querySelector("#dayConsumedCalories");
 
 
- 
+
 const startOver = document.querySelector("#StartOver");
 const lastUpdate = document.querySelector("#LastUpdate");
 
   
 
-
-//
  searchFormEl.addEventListener('submit',function(event){
      event.preventDefault();
      
@@ -43,7 +40,7 @@ const lastUpdate = document.querySelector("#LastUpdate");
 
     let foodRequest ="https://api.edamam.com/api/recipes/v2?type=public&q="+searchInputVal+"&app_id="+applicationID+"&app_key="+apiKey;
 
-   //  **** to do : add condition of fetch  
+   
    foodItems.textContent=""; // to refresh the searched food
 
 
@@ -100,9 +97,6 @@ const lastUpdate = document.querySelector("#LastUpdate");
     }
     else {
 
-     // console.log(data.hits[0].recipe.dietLabels);
-
-
         for (let i=0;i<4;i++){ // we can Display 20 results
 
       
@@ -150,7 +144,8 @@ const lastUpdate = document.querySelector("#LastUpdate");
       dietLabelsDescription.textContent="   Diet :"+data.hits[i].recipe.dietLabels;
       cuisineTypeDescription.textContent= "Cuisine :"+data.hits[i].recipe.cuisineType;
 
-      cardAction.setAttribute("class","card-action descriptionCardAction");
+      cardAction.setAttribute("class","card-action descriptionCardAction ");
+      cardAction.setAttribute("style","flex-wrap: wrap");
 
       btnAdd.setAttribute("class","btn-floating btn-Medium waves-effect waves-light red");
    
@@ -220,11 +215,7 @@ confirmBtn.textContent ="Confirm";
  foodTotalCalories.setAttribute("style","border:none;");
  const totalCaloriesRow =document.createElement("tr");
  const totalCaloriescolum =  document.createElement("th");
-//  const caloriesPlus =  document.createElement("th");
-//  const caloriesMinus =  document.createElement("th");
  totalCaloriescolum.textContent="Total Calories : ";
-//  caloriesPlus.textContent="Need :"
-//  caloriesMinus.textContent="Get rid of ";
 
 
  
@@ -257,7 +248,7 @@ confirmBtn.textContent ="Confirm";
    foodTabCalorie.textContent=dataf[1]+" Cl";
    
    
-   totalCalories.push(dataf[1]); // aray of caloies 
+   totalCalories.push(dataf[1]); // aray of calories 
 
 
 
@@ -268,8 +259,6 @@ confirmBtn.textContent ="Confirm";
     foodTotalCalories.textContent="";
       somme = somme + parseFloat(totalCalories[i]);
       totalCaloriescolum.textContent="Total Calories :"+somme.toFixed(2)+" Cal = "+(somme/3500).toFixed(2)+" lb";
-      // caloriesPlus.textContent="Need :"
-      // caloriesMinus.textContent="Get rid of ";
 
       
    }
@@ -292,8 +281,6 @@ confirmBtn.textContent ="Confirm";
    foodTable.append(foodTabbody);
 
    totalCaloriesRow.append(totalCaloriescolum);
-  // totalCaloriesRow.append(caloriesPlus);
-  // totalCaloriesRow.append(caloriesMinus);
    foodTotalCalories.append(totalCaloriesRow);
    foodTable.append(foodTotalCalories);
    CofirmDiv_Btn.append(confirmBtn);
@@ -323,11 +310,6 @@ deletefood.addEventListener('click',DeleteRow);
     totalCalories.push((somme-datacalorie).toFixed(2));
     totalCaloriescolum.textContent="Total Calories :"+(somme-datacalorie).toFixed(2)+" Cal = "+(totalCalories[0]/3500).toFixed(2)+" lb";
     deletebtn.parentElement.remove();
-    //console.log( deletebtn.parentElement.nodeName); return  element name
-
-
-  
-  
  }
 
  
@@ -401,7 +383,6 @@ function SaveUserData(){
   searchFormEl.setAttribute("class","hidden");
   foodItems.textContent="";
   dayConsumedCalories.textContent=totalCalories[0]+" Cal  = "+(totalCalories[0]/3500).toFixed(2)+" lb" ;
-  // dayConsumedCalories.textContent="You've consumed "+localStorage.getItem("totalCalories")+" Cal  = "+(localStorage.getItem("totalCalories")/3500).toFixed(2)+" lb" ;
   localStorage.setItem("totalCalories", totalCalories[0]);
 
 
@@ -434,8 +415,7 @@ function SaveUserData(){
   
     }
 
- //   console.log(users);
-  
+
 for(let i=0;i<users.length;i++){
 
   
@@ -462,8 +442,6 @@ startOver.classList.remove('hidden');
 
 
 }
-
-// Was here
 
 startOver.addEventListener('click',function(){
 
