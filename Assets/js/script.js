@@ -37,7 +37,8 @@ if(user != "") {
     if( user != "" && user!=null) {
         setCookie("username", user, 30);
     }
-    window.location.replace("http://127.0.0.1:5500/getstarted.html");
+  //  window.location.replace("http://127.0.0.1:5500/getstarted.html");        
+      window.location.href='getstarted.html';
     })
     
 }
