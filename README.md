@@ -40,5 +40,5 @@ Bri: HTML Contact Us page, API (SMTP JS) for Contact Us page emails, HTML for Ab
 
 ### Links: 
 
-Deployed: https://bripap.github.io/food-tracker/ 
-GitHub repo: https://github.com/bripap/food-tracker 
+Deployed: https://meryem-ad.github.io/food-tracker/
+GitHub repo: https://github.com/MERYEM-AD/food-tracker 
